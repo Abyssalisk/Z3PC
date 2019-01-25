@@ -20,7 +20,7 @@ public class Player extends GameObject
 		y += velY;
 
 		// KeyEvent Movement
-		if (handler.isUp())
+		if (handler.isUp() && !handler.isDownPriority())
 		{
 			velY = -3;
 		} else if (!handler.isDown())
@@ -28,7 +28,7 @@ public class Player extends GameObject
 			velY = 0;
 		}
 
-		if (handler.isDown())
+		if (handler.isDown() && !handler.isUpPriority())
 		{
 			velY = 3;
 		} else if (!handler.isUp())
@@ -36,7 +36,7 @@ public class Player extends GameObject
 			velY = 0;
 		}
 
-		if (handler.isRight())
+		if (handler.isRight() && !handler.isLeftPriority())
 		{
 			velX = 3;
 		} else if (!handler.isLeft())
@@ -44,7 +44,7 @@ public class Player extends GameObject
 			velX = 0;
 		}
 
-		if (handler.isLeft())
+		if (handler.isLeft() && !handler.isRightPriority())
 		{
 			velX = -3;
 		} else if (!handler.isRight())

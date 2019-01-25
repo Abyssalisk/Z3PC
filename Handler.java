@@ -11,6 +11,7 @@ public class Handler
 	LinkedList<GameObject> objects = new LinkedList<GameObject>();
 
 	private boolean up = false, down = false, right = false, left = false;
+	private boolean upPriority = false, downPriority = false, rightPriority = false, leftPriority = false;
 
 	/**
 	 * Updates the game per frame by updating each game object.
@@ -95,5 +96,45 @@ public class Handler
 	public void setLeft(boolean left)
 	{
 		this.left = left;
+	}
+
+	public boolean isUpPriority()
+	{
+		return upPriority;
+	}
+
+	public void setUpPriority(boolean upPriority)
+	{
+		this.upPriority = upPriority;
+	}
+
+	public boolean isDownPriority()
+	{
+		return downPriority;
+	}
+
+	public void setDownPriority(boolean downPriority)
+	{
+		this.downPriority = downPriority;
+	}
+
+	public boolean isRightPriority()
+	{
+		return rightPriority;
+	}
+
+	public void setRightPriority(boolean rightPriority)
+	{
+		this.rightPriority = rightPriority;
+	}
+
+	public boolean isLeftPriority()
+	{
+		return leftPriority;
+	}
+
+	public void setLeftPriority(boolean leftPriority)
+	{
+		this.leftPriority = leftPriority;
 	}
 }

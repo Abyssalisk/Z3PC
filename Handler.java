@@ -8,18 +8,22 @@ import java.util.LinkedList;
  */
 public class Handler
 {
-	LinkedList<GameObject> object = new LinkedList<GameObject>();
+	LinkedList<GameObject> objects = new LinkedList<GameObject>();
 
 	/**
 	 * Updates the game per frame by updating each game object.
 	 */
 	public void tick()
 	{
-		for (int i = 0; i < object.size(); i++)
+		//for (int i = 0; i < object.size(); i++)
+		//{
+		//	GameObject tempObject = object.get(i);
+		//	tempObject.tick();
+		//}
+		
+		objects.parallelStream().forEach((object) ->
 		{
-			GameObject tempObject = object.get(i);
-
-			tempObject.tick();
+			object.tick();
 		}
 	}
 
@@ -30,11 +34,15 @@ public class Handler
 	 */
 	public void render(Graphics g)
 	{
-		for (int i = 0; i < object.size(); i++)
-		{
-			GameObject tempObject = object.get(i);
-
-			tempObject.render(g);
+		//for (int i = 0; i < object.size(); i++)
+		//{
+		//	GameObject tempObject = object.get(i);
+		//	tempObject.render(g);
+		//}
+		
+		objects.parallelStream().forEach((object) ->
+	 	{
+			object.render(g);
 		}
 	}
 
@@ -45,7 +53,7 @@ public class Handler
 	 */
 	public void addObject(GameObject tempObject)
 	{
-		object.add(tempObject);
+		objects.add(tempObject);
 	}
 
 	/**
@@ -55,6 +63,6 @@ public class Handler
 	 */
 	public void removeObject(GameObject tempObject)
 	{
-		object.remove(tempObject);
+		objects.remove(tempObject);
 	}
 }

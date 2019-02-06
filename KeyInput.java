@@ -58,7 +58,6 @@ public class KeyInput extends KeyAdapter
 						handler.setRightPriority(true);
 					}
 				}
-
 			}
 		});
 	}

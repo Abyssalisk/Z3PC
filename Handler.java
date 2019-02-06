@@ -31,10 +31,19 @@ public class Handler
 	 */
 	public void render(Graphics g)
 	{
-		objects.parallelStream().forEach((object) ->
+		// objects.parallelStream().forEach((object) ->
+		// {
+		// object.render(g);
+		// });
+
+		// TODO Figure out how to safely iterate and modify in parallel stream
+
+		for (int i = 0; i < objects.size(); i++)
 		{
-			object.render(g);
-		});
+			GameObject tempObject = objects.get(i);
+
+			tempObject.render(g);
+		}
 	}
 
 	/**

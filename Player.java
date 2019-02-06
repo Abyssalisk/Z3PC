@@ -19,6 +19,8 @@ public class Player extends GameObject
 		x += velX;
 		y += velY;
 
+		collision();
+
 		// KeyEvent Movement
 		if (handler.isUp() && !handler.isDownPriority())
 		{
@@ -53,13 +55,28 @@ public class Player extends GameObject
 		}
 	}
 
+	private void collision()
+	{
+		handler.objects.parallelStream().forEach((object) ->
+		{
+			if (object.getId() == ID.Wall)
+			{
+				if (getBounds().intersects(object.getBounds()))
+				{
+					x += velX * -1;
+					y += velY * -1;
+				}
+			}
+		});
+	}
+
 	/**
 	 * Renders the Player Sprite.
 	 */
 	public void render(Graphics g)
 	{
 		g.setColor(Color.green);
-		g.fillRect(x, y, 50, 75);
+		g.fillRect(x, y, 32, 64);
 	}
 
 	/**
@@ -67,6 +84,6 @@ public class Player extends GameObject
 	 */
 	public Rectangle getBounds()
 	{
-		return new Rectangle(x, y, 50, 75);
+		return new Rectangle(x, y, 32, 64);
 	}
 }
